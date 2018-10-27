@@ -1,0 +1,53 @@
+<?php
+require_once("config/config.php");
+require_once("modules/loader.php");
+
+use function \LightFrame\loadPart;
+
+$view=isset($_GET["view"])?$_GET["view"]:"";
+$sub=isset($_GET["sub"])?$_GET["sub"]:"";
+
+//uncomment these if you have LoginMaster installed
+/* asd */
+
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?php echo (isset($extend_title)?$extend_title." :: ":"").($sub!=""?$lang[$sub]." :: ":"").($view!=""?$lang[$view]." :: ":"").$lang["site_title"] ?></title>
+        <meta charset="UTF-8"/>
+        <!-- link icon -->
+        <link rel="icon" href="./res/icon.png"/>
+        <!-- import main CSS -->
+        <link rel="stylesheet" href="./style/main.css"/>
+        <!-- import main script -->
+        <script src="./script/main.js"></script>
+        <!-- cookie consent -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"/>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+        <script>
+            window.addEventListener("load", function(){
+                window.cookieconsent.initialise({
+                    "palette": {
+                        "popup": {
+                            "background": "#000000"
+                        },
+                        "button": {
+                            "background": "#F1D600"
+                        }
+                    },
+                    "content": {
+                        "message": "<?php echo $lang["cookie_message"] ?>",
+                        "dismiss": "<?php echo $lang["cookie_dismiss"] ?>"
+                    }
+                });
+            });
+        </script>
+        <!-- reCaptcha -->
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+    </head>
+    <body>
+        
+    </body>
+</html>
