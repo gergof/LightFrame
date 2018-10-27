@@ -48,6 +48,18 @@ $sub=isset($_GET["sub"])?$_GET["sub"]:"";
         <script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
     <body>
-        
+        <div id="header" class="header">
+            <img style="max-width: 5em; max-height: 5em" src="./res/logo.png" alt="logo"/>
+            <h1>LightFrame</h1>
+        </div>
+        <div id="content">
+            <p>A very basic PHP framework that is made to suit my needs.</p>
+            <div id="module">
+                <?php loadPart($view, $sub) ?>
+            </div>
+        </div>
+        <div id="footer">
+            <p>This site was made using LightFrame</p>
+        </div>
     </body>
 </html>

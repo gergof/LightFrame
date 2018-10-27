@@ -10,7 +10,7 @@ use function \LightFrame\Utils\setError;
 
 function errorPage($errcode){
     setError($errcode);
-    if(file_exists("parts/error/".$errcode.".php")){
+    if(file_exists(__DIR__."/parts/error/".$errcode.".php")){
         include("parts/error/".$errcode.".php");
     }
     else{
@@ -24,8 +24,8 @@ function loadPart($view, $sub=null, $require=true){
 
     $view=$view==""?"index":$view;
 
-    if(sub!=null && sub!=""){
-        if(!file_exists("parts/".$view."/".$sub.".php")){
+    if($sub!=null && $sub!=""){
+        if(!file_exists(__DIR__."/parts/".$view."/".$sub.".php")){
             if($require){
                 errorPage(404);
             }
@@ -35,7 +35,7 @@ function loadPart($view, $sub=null, $require=true){
         }
     }
     else{
-        if(!file_exists("parts/".$view.".php")){
+        if(!file_exists(__DIR__."/parts/".$view.".php")){
             if($require){
                 errorPage(404);
             }
