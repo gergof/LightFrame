@@ -59,5 +59,35 @@ if($config["general"]["debug"]){
 }
 
 
+//set up LoginMaster
 //uncomment these if you have LoginMaster installed
-/* asd */
+/*
+$config=new \LoginMaster\Config($db, $config["login"]["session_lifetime"], $config["login"]["captcha_enable"], $config["login"]["captcha_after"], $config["login"]["captcha_sitekey"], $config["login"]["captcha_secretkey"], $config["login"]["ban_enable"], $config["login"]["ban_after"], $config["login"]["ban_time"], $config["login"]["look_time"], $config["login"]["remember_enable"], $config["remember_time"], "username");
+class lmHandler implements \LoginMaster\Handler{
+    public function handle($state, $target=0){
+        switch($state){
+            case \LoginMaster\LoginMaster::LOGIN_FAILED:
+                //...
+                break;
+            case \LoginMaster\LoginMaster::CAPTCHA_FAILED:
+                //...
+                break;
+            case \LoginMaster\LoginMaster::BANNED:
+                //...
+                break;
+            case \LoginMaster\LoginMaster::LOGIN_OK:
+                //... 
+                //we have $target as well
+                break;
+        }
+    }
+};
+class lmPasswordEngine implements \LoginMaster\PasswordEngine{
+    public function verify($input, $database){
+        //use something better!
+        return $input==$database;
+    }
+};
+$lm=new \LoginMaster\LoginMaster($config, new lmHandler(), new lmPasswordEngine(), new \LoginMaster\defaultTwoFactor());
+$lm->init();
+*/

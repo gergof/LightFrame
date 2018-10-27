@@ -8,7 +8,26 @@ $view=isset($_GET["view"])?$_GET["view"]:"";
 $sub=isset($_GET["sub"])?$_GET["sub"]:"";
 
 //uncomment these if you have LoginMaster installed
-/* asd */
+/*
+if($lm->validateLogin()){
+    //logged in
+    if(isset($_GET["logout"])){
+        $lm->logout();
+    }
+}
+else{
+    $lm->loginPrepare();
+    if(isset($_POST["username"]) && isset($_POST["password"])){
+        $lm->login($_POST["username"], $_POST["password"], isset($_POST["remember"]));
+    }
+    if(isset($_GET["autologin"])){
+        $lm->login("", "");
+    }
+    if(isset($_GET["forgetuser"])){
+        $lm->forgetUser();
+    }
+}
+*/
 
 ?>
 

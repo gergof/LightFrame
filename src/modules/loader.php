@@ -20,7 +20,7 @@ function errorPage($errcode){
 
 function loadPart($view, $sub=null, $require=true){
     //globalize the vars here you want to make available for parts/submodules
-    global $config, $lang, $langstr, $db;
+    global $config, $lang, $langstr, $db, $lm;
 
     $view=$view==""?"index":$view;
 
