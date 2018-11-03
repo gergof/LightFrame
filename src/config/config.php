@@ -11,7 +11,7 @@ $config=parse_ini_file("config.ini", true);
 
 
 //parse user config if available
-if(file_exists(__DIR__."user.config.ini")){
+if(file_exists(__DIR__."/user.config.ini")){
     $usrconf=parse_ini_file("user.config.ini", true);
     //merge the two config files together
     $config=array_merge($config, $usrconf);
