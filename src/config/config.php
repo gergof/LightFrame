@@ -11,7 +11,7 @@ $config=parse_ini_file("config.ini", true);
 
 
 //parse user config if available
-if(file_exists("user.config.ini")){
+if(file_exists(__DIR__."user.config.ini")){
     $usrconf=parse_ini_file("user.config.ini", true);
     //merge the two config files together
     $config=array_merge($config, $usrconf);
@@ -62,7 +62,7 @@ if($config["general"]["debug"]){
 //set up LoginMaster
 //uncomment these if you have LoginMaster installed
 /*
-$config=new \LoginMaster\Config($db, $config["login"]["session_lifetime"], $config["login"]["captcha_enable"], $config["login"]["captcha_after"], $config["login"]["captcha_sitekey"], $config["login"]["captcha_secretkey"], $config["login"]["ban_enable"], $config["login"]["ban_after"], $config["login"]["ban_time"], $config["login"]["look_time"], $config["login"]["remember_enable"], $config["remember_time"], "username");
+$config=new \LoginMaster\Config($db, $config["login"]["session_lifetime"], $config["login"]["captcha_enable"], $config["login"]["captcha_after"], $config["login"]["captcha_sitekey"], $config["login"]["captcha_secretkey"], $config["login"]["ban_enable"], $config["login"]["ban_after"], $config["login"]["ban_time"], $config["login"]["look_time"], $config["login"]["remember_enable"], $config["login"]["remember_time"], "username");
 class lmHandler implements \LoginMaster\Handler{
     public function handle($state, $target=0){
         switch($state){
@@ -76,9 +76,15 @@ class lmHandler implements \LoginMaster\Handler{
                 //...
                 break;
             case \LoginMaster\LoginMaster::LOGIN_OK:
-                //... 
+                //...
                 //we have $target as well
                 break;
+            case \LoginMaster\LoginMaster::LOGOUT_DONE:
+                //...
+                break;
+            case \LoginMaster\LoginMaster::FORGET_DONE:
+                //...
+                break; 
         }
     }
 };
